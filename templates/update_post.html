@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Noticia{% endblock %}
+
+{% block content %}
+
+<div class="columns">
+    <div class="column is-offset-3 is-6">
+
+        <h1 class="title">Actualizar Noticia</h1>
+
+        <form method="POST">
+
+            <div class="field">
+                <label class="label">Título</label>
+                <div class="control">
+                    <input class="input" type="text" name="title" value="{{ post.title }}" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Categoría</label>
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        <select name="category_id">
+                            {% for category in categories %}
+                            <option value="{{ category.id }}"
+                            {% if category.id == post.category_id %}selected{% endif %}>
+                                {{ category.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Contenido</label>
+                <div class="control">
+                    <textarea class="textarea" name="content" required>{{ post.content }}</textarea>
+                </div>
+            </div>
+
+            <br>
+
+            <button class="button is-link">
+                <i class="fa-solid fa-floppy-disk"></i> &nbsp; Actualizar
+            </button>
+
+            <a href="{{ url_for('index') }}" class="button is-light">
+                Cancelar
+            </a>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

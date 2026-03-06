@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar Noticia{% endblock %}
+
+{% block content %}
+
+<div class="columns">
+    <div class="column is-offset-3 is-6">
+
+        <div class="card">
+            <div class="card-content">
+
+                <p class="title is-4">Eliminar Noticia</p>
+
+                <p class="subtitle is-6">
+                    ¿Estás seguro que deseas eliminar la noticia:
+                    <strong>{{ post.title }}</strong>?
+                </p>
+
+                <form method="POST">
+
+                    <button class="button is-danger">
+                        <i class="fa-solid fa-trash"></i> &nbsp; Eliminar
+                    </button>
+
+                    <a href="{{ url_for('index') }}" class="button is-light">
+                        Cancelar
+                    </a>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
